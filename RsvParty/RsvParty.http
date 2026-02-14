@@ -1,0 +1,33 @@
+#@RsvParty_HostAddress = https://rsvparty.jocandlew.com
+@RsvParty_HostAddress = http://localhost:5012/
+
+###
+GET {{RsvParty_HostAddress}}/Rsvp/
+Accept: application/json
+
+###
+
+GET {{RsvParty_HostAddress}}/Rsvp/fa382707-34c8-449d-bdf8-197d5be66f68
+Accept: application/json
+
+###
+
+DELETE {{RsvParty_HostAddress}}/Rsvp/fa382707-34c8-449d-bdf8-197d5be66f68
+Accept: application/json
+
+###
+
+POST {{RsvParty_HostAddress}}/Rsvp/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Name": "Test 2",
+  "NumberInParty": 1,
+  "MoveGuess": "Bob film?",
+  "Email": "lew@gmail.xoc",
+  "getUpdates": false,
+  "getReminder": true
+}
+
+###
