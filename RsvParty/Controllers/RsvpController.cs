@@ -13,7 +13,7 @@ public class RsvpController(RsvpContext context) : ControllerBase
     // public async Task<ActionResult<IEnumerable<Rsvp>>> GetAll()
     // {
     //     return await context.Rsvps.ToListAsync();
-    // }
+    // push}
 
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<Rsvp>> Get(Guid id)
