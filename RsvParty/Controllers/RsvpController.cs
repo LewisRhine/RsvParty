@@ -21,6 +21,13 @@ public class RsvpController(RsvpContext context) : ControllerBase
         var post = await context.Rsvps.FindAsync(id);
         return post == null ? NotFound() : post;
     }
+    
+    [HttpGet("attendingcount")]
+    public async Task<ActionResult<Dictionary<string,int>>> GetAttendingCount()
+    {
+        var total = await context.Rsvps.Where(r => r.NumberInParty > 0).SumAsync(r => (int?)r.NumberInParty) ?? 0;
+        return Ok(new Dictionary<string,int> { ["Number of Attendees"] = total });
+    }
 
     [HttpPost]
     public async Task<ActionResult<Rsvp>> Create(RsvpBody rsvp)
