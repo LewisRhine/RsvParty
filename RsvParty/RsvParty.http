@@ -12,7 +12,7 @@ Accept: application/json
 
 ###
 
-DELETE {{RsvParty_HostAddress}}/Rsvp/fa382707-34c8-449d-bdf8-197d5be66f68
+DELETE {{RsvParty_HostAddress}}/Rsvp/d23226d1-388a-417c-9343-8f2b8598190b
 Accept: application/json
 
 ###
@@ -22,10 +22,10 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "Name": "Test 2",
+  "Name": "Test 6",
   "NumberInParty": 1,
   "MoveGuess": "Bob film?",
-  "Email": "lew@gmail.xoc",
+  "Email": "Jer@gmail.xoc",
   "getUpdates": false,
   "getReminder": true
 }
