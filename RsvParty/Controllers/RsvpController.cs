@@ -26,7 +26,7 @@ public class RsvpController(RsvpContext context) : ControllerBase
     public async Task<ActionResult<Dictionary<string,int>>> GetAttendingCount()
     {
         var total = await context.Rsvps.Where(r => r.NumberInParty > 0).SumAsync(r => (int?)r.NumberInParty) ?? 0;
-        return Ok(new Dictionary<string,int> { ["Number of Attendees"] = total });
+        return Ok(new Dictionary<string,int> { ["numberOfAttendees"] = total });
     }
 
     [HttpPost]
