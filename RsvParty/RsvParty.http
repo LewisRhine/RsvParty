@@ -31,3 +31,12 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{RsvParty_HostAddress}}/Register
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Email": "Jrhine@gmail.com",
+  "Password": "P@ssw0rd"
+  }
