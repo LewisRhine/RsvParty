@@ -14,6 +14,22 @@ builder.Services.AddDbContext<RsvpContext>(options => options.UseSqlite("Data So
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<RsvpContext>()
     .AddDefaultTokenProviders();
+
+// Configure Identity to work with APIs (return status codes instead of redirects)
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Events.OnRedirectToLogin = context =>
+    {
+        context.Response.StatusCode = 401;
+        return Task.CompletedTask;
+    };
+    options.Events.OnRedirectToAccessDenied = context =>
+    {
+        context.Response.StatusCode = 403;
+        return Task.CompletedTask;
+    };
+});
+
 builder.WebHost.UseContentRoot(Directory.GetCurrentDirectory());
 builder.Services.AddCors(options =>
 {

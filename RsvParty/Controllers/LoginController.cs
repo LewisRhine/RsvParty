@@ -27,4 +27,11 @@ public class LoginController : ControllerBase
 
         return Unauthorized("Invalid email or password");
     }
+
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        await _signInManager.SignOutAsync();
+        return Ok("Logout successful");
+    }
 }

@@ -7,7 +7,7 @@ Accept: application/json
 
 ###
 
-GET {{RsvParty_HostAddress}}/Rsvp/fa382707-34c8-449d-bdf8-197d5be66f68
+GET {{RsvParty_HostAddress}}/Rsvp/243d55f3-8a93-486f-b3b7-de428c539deb
 Accept: application/json
 
 ###
@@ -37,6 +37,9 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "Email": "Jrhine@gmail.com",
-  "Password": "P@ssw0rd"
+
+
+  "Email": "Jonnybgood@gmail.com",
+  "Password": "12345678"
   }
+
