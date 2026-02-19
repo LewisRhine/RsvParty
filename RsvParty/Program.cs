@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RsvParty.Data;
+using Microsoft.AspNetCore.Identity;
+using RsvParty.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,25 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RsvpContext>(options => options.UseSqlite("Data Source=rsvp.db"));
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<RsvpContext>()
+    .AddDefaultTokenProviders();
+
+// Configure Identity to work with APIs (return status codes instead of redirects)
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Events.OnRedirectToLogin = context =>
+    {
+        context.Response.StatusCode = 401;
+        return Task.CompletedTask;
+    };
+    options.Events.OnRedirectToAccessDenied = context =>
+    {
+        context.Response.StatusCode = 403;
+        return Task.CompletedTask;
+    };
+});
+
 builder.WebHost.UseContentRoot(Directory.GetCurrentDirectory());
 builder.Services.AddCors(options =>
 {
@@ -35,6 +56,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors("DevCors");
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

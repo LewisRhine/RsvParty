@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RsvParty.Data;
@@ -9,11 +10,12 @@ namespace RsvParty.Controllers;
 [Route("[controller]")]
 public class RsvpController(RsvpContext context) : ControllerBase
 {
-    // [HttpGet]
-    // public async Task<ActionResult<IEnumerable<Rsvp>>> GetAll()
-    // {
-    //     return await context.Rsvps.ToListAsync();
-    // }
+    [HttpGet]
+    [Authorize]
+    public async Task<ActionResult<IEnumerable<Rsvp>>> GetAll()
+    {
+        return await context.Rsvps.ToListAsync();
+    }
 
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<Rsvp>> Get(Guid id)
